@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://tyww13gdql2x"]
+
+[ext_resource type="Script" uid="uid://di5ps1gvkdpsh" path="res://scripts/worldmanager.gd" id="1_c7s6e"]
+[ext_resource type="ArrayMesh" uid="uid://b1kqi2ve2fb88" path="res://assets/meshes/chicken.res" id="3_e0an3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wijl4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_e0an3"]
+noise = SubResource("FastNoiseLite_wijl4")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wijl4"]
+sky_cover = SubResource("NoiseTexture2D_e0an3")
+
+[sub_resource type="Sky" id="Sky_e0an3"]
+sky_material = SubResource("ProceduralSkyMaterial_wijl4")
+
+[sub_resource type="Environment" id="Environment_p5pve"]
+background_mode = 2
+sky = SubResource("Sky_e0an3")
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldManager" type="Node3D" parent="."]
+script = ExtResource("1_c7s6e")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p5pve")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.367946, 0.545923, -0.752718, 0.108082, 0.77891, 0.617752, 0.923545, -0.308654, 0.227592, 5.71815, 11.7291, 0)
+
+[node name="Chicken" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_e0an3")
+
+[node name="Camera3D" type="Camera3D" parent="Chicken"]
+transform = Transform3D(-0.911195, 0.356782, -0.205988, 0, 0.5, 0.866025, 0.411976, 0.789118, -0.455597, -1.64102, 13.9554, -4.16432)
+projection = 1
+size = 24.809
+near = 0.02

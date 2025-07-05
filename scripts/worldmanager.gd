@@ -1,0 +1,62 @@
+extends Node3D
+
+var road = preload("res://assets/meshes/road.res")
+var grass = preload("res://assets/meshes/grass.res")
+var tree = preload("res://assets/meshes/tree.res")
+
+const laneLen = 15
+const middle = floor(float(laneLen) / 2)
+var lane_index = 0
+
+
+func init_lane() -> void:
+	lane_index += 1
+	var newLane = Node3D.new()
+	for x in laneLen:
+		var newMesh = MeshInstance3D.new()
+		var pos = Vector3(4 * x - (4 * middle), 0, 4 * lane_index - (4 * middle))
+		if lane_index % 2 == 0:
+			newMesh.mesh = road
+		else:
+			newMesh.mesh = grass
+			if randi() % 2 == 0 && x != middle:
+				var treeMesh = MeshInstance3D.new()
+				treeMesh.mesh = tree
+				treeMesh.position = pos
+				newLane.add_child(treeMesh)
+
+		newMesh.scale = Vector3(2, 2, 2)
+		newMesh.position = pos
+		newLane.add_child(newMesh)
+	add_child(newLane)
+
+
+func _ready() -> void:
+	for z in 20:
+		init_lane()
+
+
+var start := 0.0
+var end := 0.0
+var t := 1.0
+var duration := 0.2
+
+
+func easeInOutSine(x: float) -> float:
+	return -(cos(PI * x) - 1) / 2
+
+
+func _process(delta: float) -> void:
+	if t < 1.0:
+		t += delta / duration
+		self.position.z = lerp(start, end, easeInOutSine(t))
+
+	if Input.is_action_just_pressed("jump") && t >= 1.0:
+		t = 0
+		start = self.position.z
+		end = self.position.z - 4
+		init_lane()
+
+		var first_child = self.get_children()[0]
+		self.remove_child(first_child)
+		first_child.queue_free()
