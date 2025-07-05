@@ -3,6 +3,7 @@ extends Node3D
 var road = preload("res://assets/meshes/road.res")
 var grass = preload("res://assets/meshes/grass.res")
 var tree = preload("res://assets/meshes/tree.res")
+var car_script = preload("res://scripts/carspawner.gd")
 
 const laneLen = 15
 const middle = floor(float(laneLen) / 2)
@@ -17,12 +18,15 @@ func init_lane() -> void:
 		var pos = Vector3(4 * x - (4 * middle), 0, 4 * lane_index - (4 * middle))
 		if lane_index % 2 == 0:
 			newMesh.mesh = road
+			if x == laneLen - 1:
+				newMesh.set_script(car_script)
 		else:
 			newMesh.mesh = grass
 			if randi() % 2 == 0 && x != middle:
 				var treeMesh = MeshInstance3D.new()
 				treeMesh.mesh = tree
 				treeMesh.position = pos
+				treeMesh.rotate_y(randi() % 180)
 				newLane.add_child(treeMesh)
 
 		newMesh.scale = Vector3(2, 2, 2)
