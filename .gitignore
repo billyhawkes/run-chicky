@@ -1,3 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+.import/
+
+.DS_Store
+2d.afdesign~lock~
+
+*.blend[0-9]*
+
