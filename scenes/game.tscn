@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://tyww13gdql2x"]
+[gd_scene load_steps=10 format=3 uid="uid://tyww13gdql2x"]
 
+[ext_resource type="Script" uid="uid://ba3nvvmoy40og" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://di5ps1gvkdpsh" path="res://scripts/worldmanager.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b50exxomqxm1t" path="res://scenes/character.tscn" id="2_yqjtg"]
+[ext_resource type="Script" uid="uid://n1s3mghc3j16" path="res://scenes/hud.gd" id="4_lbhrr"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wijl4"]
 
@@ -20,6 +22,10 @@ sky = SubResource("Sky_lnu2h")
 
 [node name="Game" type="Node3D"]
 
+[node name="GameState" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_lnu2h")
+
 [node name="WorldManager" type="Node3D" parent="."]
 script = ExtResource("1_yqjtg")
 
@@ -30,3 +36,16 @@ environment = SubResource("Environment_p5pve")
 transform = Transform3D(0.367946, 0.545923, -0.752718, 0.108082, 0.77891, 0.617752, 0.923545, -0.308654, 0.227592, 5.71815, 11.7291, 0)
 
 [node name="Character" parent="." instance=ExtResource("2_yqjtg")]
+script = null
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("4_lbhrr")
+
+[node name="Score" type="Label" parent="HUD"]
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 56.0
+offset_bottom = 99.0
+
+[connection signal="score_changed" from="GameState" to="HUD" method="_on_game_state_score_changed"]
+[connection signal="moved" from="WorldManager" to="GameState" method="_on_world_moved"]

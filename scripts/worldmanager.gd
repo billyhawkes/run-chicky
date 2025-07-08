@@ -9,6 +9,8 @@ const laneLen = 15
 const middle = floor(float(laneLen) / 2)
 var lane_index = 0
 
+signal moved
+
 
 func init_lane() -> void:
 	lane_index += 1
@@ -57,6 +59,7 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump") && t >= 1.0:
 		t = 0
+		moved.emit()
 		start = self.position.z
 		end = self.position.z - 4
 		init_lane()

@@ -1,13 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://b50exxomqxm1t"]
 
 [ext_resource type="ArrayMesh" uid="uid://b1kqi2ve2fb88" path="res://assets/meshes/chicken.res" id="1_agfs1"]
-[ext_resource type="Script" uid="uid://domf4sokkkda0" path="res://scripts/character.gd" id="1_rkhd4"]
+
+[sub_resource type="GDScript" id="GDScript_agfs1"]
+script/source = "extends CharacterBody3D
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rkhd4"]
 size = Vector3(2.16895, 2.40906, 2.29492)
 
 [node name="Character" type="CharacterBody3D"]
-script = ExtResource("1_rkhd4")
+script = SubResource("GDScript_agfs1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_agfs1")
