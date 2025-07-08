@@ -1,16 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://d1t28dgjvlt7j"]
 
 [ext_resource type="ArrayMesh" uid="uid://bamhc0funxw5l" path="res://assets/meshes/car.res" id="1_c35m8"]
-[ext_resource type="Script" uid="uid://c6fyp1hyrrrbe" path="res://scenes/car.gd" id="1_qt2eu"]
+[ext_resource type="Script" uid="uid://c6fyp1hyrrrbe" path="res://scripts/car.gd" id="1_qt2eu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qt2eu"]
-size = Vector3(5.79236, 2.56586, 2.78711)
+size = Vector3(4.84595, 2.39624, 2.79395)
 
-[node name="Car" type="CharacterBody3D"]
+[node name="Car" type="Node3D"]
 script = ExtResource("1_qt2eu")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.216614, 1.36246, 0)
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.492371, 1.36246, 0)
 shape = SubResource("BoxShape3D_qt2eu")
 
 [node name="Car" type="MeshInstance3D" parent="."]
@@ -29,3 +31,5 @@ light_color = Color(1, 1, 0.8, 1)
 light_energy = 16.0
 spot_range = 7.0
 spot_angle = 45.17
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

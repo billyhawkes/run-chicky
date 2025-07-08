@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://tyww13gdql2x"]
+[gd_scene load_steps=12 format=3 uid="uid://tyww13gdql2x"]
 
 [ext_resource type="Script" uid="uid://ba3nvvmoy40og" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="Script" uid="uid://di5ps1gvkdpsh" path="res://scripts/worldmanager.gd" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b50exxomqxm1t" path="res://scenes/character.tscn" id="2_yqjtg"]
 [ext_resource type="Script" uid="uid://n1s3mghc3j16" path="res://scenes/hud.gd" id="4_lbhrr"]
+[ext_resource type="Script" uid="uid://c8k24k6dw80m8" path="res://scripts/character.gd" id="4_p57ef"]
+[ext_resource type="StyleBox" uid="uid://covqn0g5f8wmt" path="res://interface/container.tres" id="5_iywne"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wijl4"]
 
@@ -29,6 +31,12 @@ script = ExtResource("1_lnu2h")
 [node name="WorldManager" type="Node3D" parent="."]
 script = ExtResource("1_yqjtg")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.911195, 0.356782, -0.205988, 0, 0.5, 0.866026, 0.411976, 0.789118, -0.455597, -1.64102, 13.9554, -4.16432)
+projection = 1
+size = 25.0
+near = 0.02
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_p5pve")
 
@@ -36,7 +44,7 @@ environment = SubResource("Environment_p5pve")
 transform = Transform3D(0.367946, 0.545923, -0.752718, 0.108082, 0.77891, 0.617752, 0.923545, -0.308654, 0.227592, 5.71815, 11.7291, 0)
 
 [node name="Character" parent="." instance=ExtResource("2_yqjtg")]
-script = null
+script = ExtResource("4_p57ef")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("4_lbhrr")
@@ -46,6 +54,36 @@ offset_left = 15.0
 offset_top = 14.0
 offset_right = 56.0
 offset_bottom = 99.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = ExtResource("5_iywne")
+text = "0"
 
+[node name="Death" type="VBoxContainer" parent="HUD"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="HUD/Death"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "You are dead!"
+
+[node name="BackToMenu" type="Button" parent="HUD/Death"]
+layout_mode = 2
+text = "Back to main menu"
+
+[connection signal="on_death" from="GameState" to="Character" method="_on_game_state_on_death"]
+[connection signal="on_death" from="GameState" to="HUD" method="_on_game_state_on_death"]
 [connection signal="score_changed" from="GameState" to="HUD" method="_on_game_state_score_changed"]
 [connection signal="moved" from="WorldManager" to="GameState" method="_on_world_moved"]
+[connection signal="pressed" from="HUD/Death/BackToMenu" to="HUD" method="_on_back_to_menu_pressed"]

@@ -1,7 +1,7 @@
 extends Node
 
 var car: PackedScene = load("res://scenes/car.tscn")
-var t := 0.0
+var t := 1.0
 var duration := randi() % 5 + 5
 
 

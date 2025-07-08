@@ -5,6 +5,8 @@ var grass = preload("res://assets/meshes/grass.res")
 var tree = preload("res://assets/meshes/tree.res")
 var car_script = preload("res://scripts/carspawner.gd")
 
+@onready var gameState = %GameState
+
 const laneLen = 15
 const middle = floor(float(laneLen) / 2)
 var lane_index = 0
@@ -57,7 +59,7 @@ func _process(delta: float) -> void:
 		t += delta / duration
 		self.position.z = lerp(start, end, easeInOutSine(t))
 
-	if Input.is_action_just_pressed("jump") && t >= 1.0:
+	if Input.is_action_just_pressed("jump") && t >= 1.0 && gameState.dead == false:
 		t = 0
 		moved.emit()
 		start = self.position.z
