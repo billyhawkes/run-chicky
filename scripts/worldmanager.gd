@@ -7,8 +7,8 @@ var car_script = preload("res://scripts/carspawner.gd")
 
 @onready var gameState = %GameState
 
-const laneLen = 15
-const middle = floor(float(laneLen) / 2)
+const lane_length = 15
+const middle = floor(float(lane_length) / 2)
 var lane_index = 0
 
 signal moved
@@ -17,14 +17,11 @@ signal moved
 func init_lane() -> void:
 	lane_index += 1
 	var newLane = Node3D.new()
-	for x in laneLen:
+	var laneType = lane_index % max(floor(lane_index / 6), 2)
+	for x in lane_length:
 		var newMesh = MeshInstance3D.new()
 		var pos = Vector3(4 * x - (4 * middle), 0, 4 * lane_index - (4 * middle))
-		if lane_index % 2 == 0:
-			newMesh.mesh = road
-			if x == laneLen - 1:
-				newMesh.set_script(car_script)
-		else:
+		if laneType == 0:
 			newMesh.mesh = grass
 			if randi() % 2 == 0 && x != middle:
 				var treeMesh = MeshInstance3D.new()
@@ -32,6 +29,10 @@ func init_lane() -> void:
 				treeMesh.position = pos
 				treeMesh.rotate_y(randi() % 180)
 				newLane.add_child(treeMesh)
+		else:
+			newMesh.mesh = road
+			if x == lane_length - 1:
+				newMesh.set_script(car_script)
 
 		newMesh.scale = Vector3(2, 2, 2)
 		newMesh.position = pos

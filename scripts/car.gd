@@ -1,16 +1,19 @@
 extends Node3D
 
-var speed := randi() % 5 + 5
+var speed := 5
 
 signal car_death
 
+var gameState
+
 
 func _ready() -> void:
-	var gameState = get_node("/root/Game/GameState")
+	gameState = get_node("/root/Game/GameState")
 	car_death.connect(gameState._on_death)
 
 
 func _process(delta: float) -> void:
+	speed = 5 + gameState.score / 10
 	self.position += Vector3(-speed * delta, 0.0, 0.0)
 
 
