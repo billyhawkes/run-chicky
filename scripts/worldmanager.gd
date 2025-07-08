@@ -15,9 +15,9 @@ signal moved
 
 
 func init_lane() -> void:
-	lane_index += 1
 	var newLane = Node3D.new()
-	var laneType = lane_index % max(floor(lane_index / 6), 2)
+	var laneType = lane_index % max(floor(gameState.score / 5), 2)
+	lane_index += 1
 	for x in lane_length:
 		var newMesh = MeshInstance3D.new()
 		var pos = Vector3(4 * x - (4 * middle), 0, 4 * lane_index - (4 * middle))
@@ -41,7 +41,7 @@ func init_lane() -> void:
 
 
 func _ready() -> void:
-	for z in 20:
+	for z in 13:
 		init_lane()
 
 
