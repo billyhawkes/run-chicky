@@ -13,5 +13,6 @@ func _on_world_moved() -> void:
 
 
 func _on_death() -> void:
+	AudioPlayer.reset_music_pitch()
 	dead = true
 	on_death.emit()
