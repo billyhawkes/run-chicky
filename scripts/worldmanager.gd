@@ -61,6 +61,7 @@ func _process(delta: float) -> void:
 		self.position.z = lerp(start, end, easeInOutSine(t))
 
 	if Input.is_action_just_pressed("jump") && t >= 1.0 && gameState.dead == false:
+		AudioPlayer.play_jump()
 		t = 0
 		moved.emit()
 		start = self.position.z

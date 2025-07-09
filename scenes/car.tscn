@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1t28dgjvlt7j"]
+[gd_scene load_steps=5 format=3 uid="uid://d1t28dgjvlt7j"]
 
 [ext_resource type="ArrayMesh" uid="uid://bamhc0funxw5l" path="res://assets/meshes/car.res" id="1_c35m8"]
 [ext_resource type="Script" uid="uid://c6fyp1hyrrrbe" path="res://scripts/car.gd" id="1_qt2eu"]
+[ext_resource type="AudioStream" uid="uid://jtf26wxbc1qu" path="res://assets/audio/car.wav" id="3_50v30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qt2eu"]
 size = Vector3(4.84595, 2.39624, 2.79395)
@@ -31,5 +32,8 @@ light_color = Color(1, 1, 0.8, 1)
 light_energy = 16.0
 spot_range = 7.0
 spot_angle = 45.17
+
+[node name="SFX_Car" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_50v30")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

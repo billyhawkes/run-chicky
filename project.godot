@@ -16,6 +16,10 @@ run/main_scene="uid://tyww13gdql2x"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://2nb80jddyfsh"
 
+[autoload]
+
+AudioPlayer="*res://scenes/audio_player.tscn"
+
 [display]
 
 window/size/viewport_width=1920

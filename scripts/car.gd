@@ -5,10 +5,12 @@ var speed := 5
 signal car_death
 
 var gameState
+@onready var SFX_Car: AudioStreamPlayer3D = $SFX_Car
 
 
 func _ready() -> void:
 	gameState = get_node("/root/Game/GameState")
+	SFX_Car.play()
 	car_death.connect(gameState._on_death)
 
 
