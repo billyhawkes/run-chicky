@@ -9,7 +9,7 @@ func play_jump() -> void:
 
 
 func increase_music_pitch() -> void:
-	SFX_Music.pitch_scale += 0.005
+	SFX_Music.pitch_scale += 0.001
 
 
 func reset_music_pitch() -> void:

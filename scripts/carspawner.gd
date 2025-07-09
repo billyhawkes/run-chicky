@@ -3,8 +3,8 @@ extends Node
 var gameState
 var car: PackedScene = load("res://scenes/car.tscn")
 
-var t := 0.7
-var duration := randi() % 5 + 5
+var t := 0.5
+var duration := randi() % 5 + 2
 
 
 func _ready() -> void:

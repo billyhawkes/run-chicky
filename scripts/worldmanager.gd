@@ -41,7 +41,7 @@ func init_lane() -> void:
 
 
 func _ready() -> void:
-	for z in 13:
+	for z in 30:
 		init_lane()
 
 
