@@ -20,5 +20,5 @@ func _process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.name == "Chicken":
+	if body.name == "Character":
 		car_death.emit()
