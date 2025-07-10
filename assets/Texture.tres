@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dernw3kibasob"]
+
+[ext_resource type="Texture2D" uid="uid://dlegsv8xs418b" path="res://assets/images/palette.png" id="1_vldqt"]
+
+[resource]
+resource_name = "Texture"
+cull_mode = 2
+albedo_texture = ExtResource("1_vldqt")
+roughness = 0.5
+texture_filter = 0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d1t28dgjvlt7j"]
 
-[ext_resource type="ArrayMesh" uid="uid://bamhc0funxw5l" path="res://assets/meshes/car.res" id="1_c35m8"]
 [ext_resource type="Script" uid="uid://c6fyp1hyrrrbe" path="res://scripts/car.gd" id="1_qt2eu"]
+[ext_resource type="ArrayMesh" uid="uid://c1fdv8cl20yoe" path="res://assets/meshes/Car.res" id="2_50v30"]
 [ext_resource type="AudioStream" uid="uid://jtf26wxbc1qu" path="res://assets/audio/car.wav" id="3_50v30"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qt2eu"]
@@ -17,7 +17,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.492371, 1.36246, 0)
 shape = SubResource("BoxShape3D_qt2eu")
 
 [node name="Car" type="MeshInstance3D" parent="."]
-mesh = ExtResource("1_c35m8")
+mesh = ExtResource("2_50v30")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.0293871, 0, 0.999568, 0, 1, 0, -0.999568, 0, 0.0293871, -3.30194, 1.06404, -0.812371)

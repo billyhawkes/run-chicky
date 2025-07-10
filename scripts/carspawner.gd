@@ -15,8 +15,7 @@ func _process(delta: float) -> void:
 	t += delta / duration
 
 	if t > 1:
-		duration = (randi() % 5 + 5) - (max(gameState.score, 1) / 10)
+		duration = max((randi() % 15 + 2) - (max(gameState.score, 1) / 10), 3)
 		t = 0
 		var newCar = car.instantiate()
-		newCar.scale = Vector3(0.5, 0.5, 0.5)
 		add_child(newCar)

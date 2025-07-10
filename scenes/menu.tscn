@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://ct7l7nbrfxjjl"]
 
-[ext_resource type="ArrayMesh" uid="uid://dek35kspg7nm5" path="res://assets/meshes/grass.res" id="1_vjb58"]
-[ext_resource type="ArrayMesh" uid="uid://b1kqi2ve2fb88" path="res://assets/meshes/chicken.res" id="2_con2f"]
-[ext_resource type="ArrayMesh" uid="uid://bbnjjpl2h0y0e" path="res://assets/meshes/tree.res" id="3_4ytvr"]
-[ext_resource type="ArrayMesh" uid="uid://bamhc0funxw5l" path="res://assets/meshes/car.res" id="4_g3eks"]
-[ext_resource type="ArrayMesh" uid="uid://ccrbehgv7oggo" path="res://assets/meshes/road.res" id="5_v86rl"]
+[ext_resource type="ArrayMesh" uid="uid://bpatqp231dioq" path="res://assets/meshes/Grass.res" id="1_g3eks"]
+[ext_resource type="ArrayMesh" uid="uid://ddj2csg640l1n" path="res://assets/meshes/Chicken.res" id="2_v86rl"]
+[ext_resource type="ArrayMesh" uid="uid://dui06qlnp3tjx" path="res://assets/meshes/Tree.res" id="3_13sgg"]
+[ext_resource type="ArrayMesh" uid="uid://c1fdv8cl20yoe" path="res://assets/meshes/Car.res" id="4_i6lef"]
+[ext_resource type="ArrayMesh" uid="uid://cbnbd2ri76jah" path="res://assets/meshes/Road.res" id="5_70i5f"]
 [ext_resource type="Script" uid="uid://d18m1j4wsyav7" path="res://scripts/main_menu.gd" id="6_v86rl"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4h3mk"]
@@ -40,102 +40,102 @@ transform = Transform3D(0.367946, 0.545923, -0.752718, 0.108082, 0.77891, 0.6177
 
 [node name="Grass" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
-mesh = ExtResource("1_vjb58")
+mesh = ExtResource("1_g3eks")
 skeleton = NodePath("../..")
 
 [node name="Chicken" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.277988)
-mesh = ExtResource("2_con2f")
+mesh = ExtResource("2_v86rl")
 skeleton = NodePath("../..")
 
 [node name="Tree" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-0.271911, 0, 0.962322, 0, 1, 0, -0.962322, 0, -0.271911, -4.68514, 0, -0.477556)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree9" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(0.824709, 0, 0.565557, 0, 1, 0, -0.565557, 0, 0.824709, -4.68514, 0, -8.25231)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree2" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(0.161569, 0, 0.986861, 0, 1, 0, -0.986861, 0, 0.161569, 7.7794, 0, -8.66668)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree7" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(0.161569, 0, 0.986861, 0, 1, 0, -0.986861, 0, 0.161569, 13.0713, 0, -0.0726748)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree8" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-0.723895, 0, 0.68991, 0, 1, 0, -0.68991, 0, -0.723895, 11.1509, 0, -7.45125)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree3" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(0.665517, 0, -0.746383, 0, 1, 0, 0.746383, 0, 0.665517, 3.50041, 0, 3.92067)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree11" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(0.665517, 0, -0.746383, 0, 1, 0, 0.746383, 0, 0.665517, 9.80445, 0, 3.92067)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree6" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-0.272213, 0, 0.962237, 0, 1, 0, -0.962237, 0, -0.272213, 3.50041, 0, -8.95835)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree10" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(-0.95516, 0, 0.296091, 0, 1, 0, -0.296091, 0, -0.95516, -0.246125, 0, -8.95835)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree4" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13856, 0, -12.9907)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Tree5" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.55282, 0, -12.2919)
-mesh = ExtResource("3_4ytvr")
+mesh = ExtResource("3_13sgg")
 skeleton = NodePath("../..")
 
 [node name="Car" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50537, 0, -3.84751)
-mesh = ExtResource("4_g3eks")
+mesh = ExtResource("4_i6lef")
 skeleton = NodePath("../..")
 
 [node name="Road" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.01, -4)
-mesh = ExtResource("5_v86rl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, -4)
+mesh = ExtResource("5_70i5f")
 skeleton = NodePath("../..")
 
 [node name="Road6" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4, 0.01, -4)
-mesh = ExtResource("5_v86rl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.01, -4)
+mesh = ExtResource("5_70i5f")
 skeleton = NodePath("../..")
 
 [node name="Road2" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 4, 0.01, -4)
-mesh = ExtResource("5_v86rl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.01, -4)
+mesh = ExtResource("5_70i5f")
 skeleton = NodePath("../..")
 
 [node name="Road3" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8, 0.01, -4)
-mesh = ExtResource("5_v86rl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.01, -4)
+mesh = ExtResource("5_70i5f")
 skeleton = NodePath("../..")
 
 [node name="Road4" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12, 0.01, -4)
-mesh = ExtResource("5_v86rl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0.01, -4)
+mesh = ExtResource("5_70i5f")
 skeleton = NodePath("../..")
 
 [node name="Road5" type="MeshInstance3D" parent="Environment"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 16, 0.01, -4)
-mesh = ExtResource("5_v86rl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.01, -4)
+mesh = ExtResource("5_70i5f")
 skeleton = NodePath("../..")
 
 [node name="MainMenu" type="CanvasLayer" parent="."]

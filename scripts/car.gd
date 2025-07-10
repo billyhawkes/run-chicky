@@ -15,11 +15,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	speed = 5 + gameState.score / 10
+	speed = 5 + max(gameState.score, 1) / 5
 	self.position += Vector3(-speed * delta, 0.0, 0.0)
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	print(body)
-	if body.name == "Character":
+	if body.name == "Chicken":
 		car_death.emit()

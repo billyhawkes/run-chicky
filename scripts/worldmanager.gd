@@ -1,8 +1,8 @@
 extends Node3D
 
-var road = preload("res://assets/meshes/road.res")
-var grass = preload("res://assets/meshes/grass.res")
-var tree = preload("res://assets/meshes/tree.res")
+var road = preload("res://assets/meshes/Road.res")
+var grass = preload("res://assets/meshes/Grass.res")
+var tree = preload("res://assets/meshes/Tree.res")
 var car_script = preload("res://scripts/carspawner.gd")
 
 @onready var gameState = %GameState
@@ -16,7 +16,8 @@ signal moved
 
 func init_lane() -> void:
 	var newLane = Node3D.new()
-	var laneType = lane_index % max(floor(gameState.score / 5), 2)
+	var difficulty_scale = max(floor(sqrt(gameState.score) / 2.0), 2)
+	var laneType = lane_index % int(difficulty_scale)
 	lane_index += 1
 	for x in lane_length:
 		var newMesh = MeshInstance3D.new()
@@ -34,7 +35,6 @@ func init_lane() -> void:
 			if x == lane_length - 1:
 				newMesh.set_script(car_script)
 
-		newMesh.scale = Vector3(2, 2, 2)
 		newMesh.position = pos
 		newLane.add_child(newMesh)
 	add_child(newLane)
@@ -57,7 +57,7 @@ func easeInOutSine(x: float) -> float:
 
 func _process(delta: float) -> void:
 	if t < 1.0:
-		t += delta / duration
+		t = clamp(t + delta / duration, 0, 1)
 		self.position.z = lerp(start, end, easeInOutSine(t))
 
 	if Input.is_action_just_pressed("jump") && t >= 1.0 && gameState.dead == false:

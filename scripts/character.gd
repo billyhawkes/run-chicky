@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends StaticBody3D
 
 
 func _on_game_state_on_death() -> void:
